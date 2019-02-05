@@ -1,5 +1,5 @@
 ```@meta
-CurrentModule = StatisticalRethinking
+CurrentModule = MambaModels
 ```
 
 ## `maximum_a_posteriori`
@@ -12,16 +12,16 @@ maximum_a_posteriori(model, lower_bound, upper_bound)
 link(xrange, chain, vars, xbar) 
 ```
 
-## `rel_path`
+## `rel_path_m`
 ```@docs
-rel_path(parts...)
+rel_path_m(parts...)
 ```
 
 ## `generate`
 ```@docs
-generate(; sd=script_dict)
-generate(chapter::AbstractString; sd=script_dict)
-generate(chapter::AbstractString, scriptfile::AbstractString; sd=script_dict)
+generate_m(; sd=script_dict_m)
+generate_m(chapter::AbstractString; sd=script_dict_m)
+generate_m(chapter::AbstractString, scriptfile::AbstractString; sd=script_dict_m)
 ```
 
 ## `ScriptEntry`

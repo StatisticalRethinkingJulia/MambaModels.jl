@@ -1,4 +1,4 @@
-using StatisticalRethinking, Mamba
+using MambaModels, Mamba
 
 ## Data
 line = Dict{Symbol, Any}()

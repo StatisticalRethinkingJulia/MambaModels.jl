@@ -1,4 +1,4 @@
-using StatisticalRethinking
+using MambaModels
 using Test
 
 println("Tests are executed in docs job.")

@@ -1,31 +1,26 @@
-using StatisticalRethinking
+using MambaModels
 using Literate
 using Documenter
 
 # The idea: generate both docs and notebooks using Literate
 # Based on ideas and work from Tamas Papp!
 
-DOC_ROOT = rel_path("..", "docs")
-DocDir =  rel_path("..", "docs", "src")
+DOC_ROOT = rel_path_m("..", "docs")
+DocDir =  rel_path_m("..", "docs", "src")
 
 page_list = Array{Pair{String, Any}, 1}();
 append!(page_list, [Pair("Home", "intro.md")]);
-append!(page_list, [Pair("Layout", "layout.md")])
-append!(page_list, [Pair("Versions", "versions.md")]);
-append!(page_list, [Pair("Notes", "notes.md")]);
-append!(page_list, [Pair("Acknowledgements", "acknowledgements.md")]);
-append!(page_list, [Pair("References", "references.md")])
 
-for chapter in keys(script_dict)
-  ProjDir = rel_path( "..", "scripts", chapter)
-  DocDir =  rel_path("..", "docs", "src", chapter)
+for chapter in keys(script_dict_m)
+  ProjDir = rel_path_m( "..", "scripts", chapter)
+  DocDir =  rel_path_m("..", "docs", "src", chapter)
   
   !isdir(ProjDir) && break
   
   cd(ProjDir) do
     
     script_list = Array{Pair{String, Any}, 1}();
-    for script in script_dict[chapter]
+    for script in script_dict_m[chapter]
       if script.doc
         file = script.scriptfile
         append!(script_list, [Pair(file[1:end-3], "$(chapter)/$(file[1:end-3]).md")])
@@ -49,11 +44,11 @@ append!(page_list, [Pair("Functions", "index.md")])
 
 makedocs(root = DOC_ROOT,
     modules = Module[],
-    sitename = "StatisticalRethinking.jl",
+    sitename = "MambaModels.jl",
     authors = "Rob Goedman, Richard Torkar, and contributors.",
     pages = page_list
 )
 
 deploydocs(root = DOC_ROOT,
-    repo = "github.com/StanJulia/StatisticalRethinking.jl.git",
+    repo = "github.com/StatisticalRethinkingJulia/MambaModels.jl.git",
  )
