@@ -5,12 +5,12 @@ using Reexport
 @reexport using Distributions, RDatasets, DataFrames
 @reexport using StatsBase, StatsPlots, StatsFuns 
 @reexport using CSV, DelimitedFiles, Serialization
-@reexport using MCMCChain
+@reexport using MCMCChain, Mamba
 
 using DataStructures
-import SR: ScriptEntry
+import SR: scriptentry
 
-const src_path = @__DIR__
+const src_path_m = @__DIR__
 
 """
 
@@ -24,7 +24,7 @@ Relative path using the MambaModels src/ directory. Copied from
 rel_path_m("..", "data")
 ```
 """
-rel_path_m(parts...) = normpath(joinpath(src_path, parts...))
+rel_path_m(parts...) = normpath(joinpath(src_path_m, parts...))
 
 include("scriptentry_m.jl")
 include("generate_m.jl")
