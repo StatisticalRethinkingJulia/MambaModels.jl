@@ -8,7 +8,6 @@ using Reexport
 @reexport using MCMCChain, Mamba
 
 using DataStructures
-import SR: scriptentry
 
 const src_path_m = @__DIR__
 
