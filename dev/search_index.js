@@ -25,6 +25,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "04/m4.4m/#",
+    "page": "m4.4m",
+    "title": "m4.4m",
+    "category": "page",
+    "text": "EditURL = \"https://github.com/StatisticalRethinkingJulia/MambaModels.jl/blob/master/scripts/04/m4.4m.jl\"using MambaModels\n\n# Data\nline = Dict{Symbol, Any}()\n\nhowell1 = CSV.read(rel_path(\"..\", \"data\", \"Howell1.csv\"), delim=\';\')\ndf = convert(DataFrame, howell1);Use only adultsdf2 = filter(row -> row[:age] >= 18, df);\nmean_weight = mean(df2[:weight])\ndf2[:weight_c] = convert(Vector{Float64}, df2[:weight]) .- mean_weight ;\nline[:x] = convert(Array{Float64,1}, df2[:weight_c]);\nline[:y] = convert(Array{Float64,1}, df2[:height]);\nline[:xmat] = convert(Array{Float64,2}, [ones(length(line[:x])) line[:x]])Model Specificationmodel = Model(\n  y = Stochastic(1,\n    (xmat, beta, s2) -> MvNormal(xmat * beta, sqrt(s2)),\n    false\n  ),\n  beta = Stochastic(1, () -> MvNormal([178, 0], [sqrt(10000), sqrt(100)])),\n  s2 = Stochastic(() -> Uniform(0, 50))\n)Initial Valuesinits = [\n  Dict{Symbol, Any}(\n    :y => line[:y],\n    :beta => [rand(Normal(178, 100)), rand(Normal(0, 10))],\n    :s2 => rand(Uniform(0, 50))\n  )\n  for i in 1:3\n]Tuning Parametersscale1 = [0.5, 0.25]\nsummary1 = identity\neps1 = 0.5\n\nscale2 = 0.5\nsummary2 = x -> [mean(x); sqrt(var(x))]\neps2 = 0.1Define sampling schemescheme = [\n  Mamba.NUTS([:beta]),\n  Mamba.Slice([:s2], 10)\n]\n\nsetsamplers!(model, scheme)MCMC Simulationchn = mcmc(model, line, inits, 10000, burnin=1000, chains=3)Show draws summarydescribe(chn)End of m4.1m.jlThis page was generated using Literate.jl."
+},
+
+{
     "location": "#",
     "page": "Functions",
     "title": "Functions",
