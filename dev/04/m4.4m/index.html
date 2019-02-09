@@ -57,9 +57,9 @@ NaN</code></pre></div><p>Initial Values</p><div><pre><code class="language-julia
   )
   for i in 1:3
 ]</code></pre><pre><code class="language-none">3-element Array{Dict{Symbol,Any},1}:
- Dict(:beta=&gt;[442.767, -18.7016],:y=&gt;[151.765, 139.7, 136.525, 156.845, 145.415, 163.83, 149.225, 168.91, 147.955, 165.1  …  156.21, 160.655, 146.05, 156.21, 152.4, 162.56, 142.875, 162.56, 156.21, 158.75],:s2=&gt;23.6582)
- Dict(:beta=&gt;[249.244, 17.1068],:y=&gt;[151.765, 139.7, 136.525, 156.845, 145.415, 163.83, 149.225, 168.91, 147.955, 165.1  …  156.21, 160.655, 146.05, 156.21, 152.4, 162.56, 142.875, 162.56, 156.21, 158.75],:s2=&gt;39.6934)
- Dict(:beta=&gt;[233.444, -10.5349],:y=&gt;[151.765, 139.7, 136.525, 156.845, 145.415, 163.83, 149.225, 168.91, 147.955, 165.1  …  156.21, 160.655, 146.05, 156.21, 152.4, 162.56, 142.875, 162.56, 156.21, 158.75],:s2=&gt;10.424)</code></pre></div><p>Tuning Parameters</p><div><pre><code class="language-julia">scale1 = [0.5, 0.25]
+ Dict(:beta=&gt;[-14.8748, 7.90018],:y=&gt;[151.765, 139.7, 136.525, 156.845, 145.415, 163.83, 149.225, 168.91, 147.955, 165.1  …  156.21, 160.655, 146.05, 156.21, 152.4, 162.56, 142.875, 162.56, 156.21, 158.75],:s2=&gt;8.93772)
+ Dict(:beta=&gt;[198.002, 15.9835],:y=&gt;[151.765, 139.7, 136.525, 156.845, 145.415, 163.83, 149.225, 168.91, 147.955, 165.1  …  156.21, 160.655, 146.05, 156.21, 152.4, 162.56, 142.875, 162.56, 156.21, 158.75],:s2=&gt;40.165)
+ Dict(:beta=&gt;[105.044, -4.03791],:y=&gt;[151.765, 139.7, 136.525, 156.845, 145.415, 163.83, 149.225, 168.91, 147.955, 165.1  …  156.21, 160.655, 146.05, 156.21, 152.4, 162.56, 142.875, 162.56, 156.21, 158.75],:s2=&gt;30.8327)</code></pre></div><p>Tuning Parameters</p><div><pre><code class="language-julia">scale1 = [0.5, 0.25]
 summary1 = identity
 eps1 = 0.5
 
@@ -84,8 +84,8 @@ s2:
 A monitored node of type &quot;ScalarStochastic&quot;
 NaN</code></pre></div><p>MCMC Simulation</p><div><pre><code class="language-julia">chn = mcmc(model, line, inits, 10000, burnin=1000, chains=3)</code></pre><pre><code class="language-none">MCMC Simulation of 10000 Iterations x 3 Chains...
 
-Chain 1:   0% [0:44:55 of 0:44:57 remaining]
-Chain 1:  10% [0:00:28 of 0:00:31 remaining]
+Chain 1:   0% [0:44:01 of 0:44:04 remaining]
+Chain 1:  10% [0:00:27 of 0:00:30 remaining]
 Chain 1:  20% [0:00:15 of 0:00:19 remaining]
 Chain 1:  30% [0:00:10 of 0:00:14 remaining]
 Chain 1:  40% [0:00:07 of 0:00:11 remaining]
@@ -96,7 +96,7 @@ Chain 1:  80% [0:00:02 of 0:00:08 remaining]
 Chain 1:  90% [0:00:01 of 0:00:07 remaining]
 Chain 1: 100% [0:00:00 of 0:00:07 remaining]
 
-Chain 2:   0% [0:00:03 of 0:00:03 remaining]
+Chain 2:   0% [0:00:02 of 0:00:02 remaining]
 Chain 2:  10% [0:00:03 of 0:00:04 remaining]
 Chain 2:  20% [0:00:03 of 0:00:04 remaining]
 Chain 2:  30% [0:00:03 of 0:00:04 remaining]
@@ -108,7 +108,7 @@ Chain 2:  80% [0:00:01 of 0:00:04 remaining]
 Chain 2:  90% [0:00:00 of 0:00:04 remaining]
 Chain 2: 100% [0:00:00 of 0:00:04 remaining]
 
-Chain 3:   0% [0:00:03 of 0:00:03 remaining]
+Chain 3:   0% [0:00:02 of 0:00:02 remaining]
 Chain 3:  10% [0:00:03 of 0:00:04 remaining]
 Chain 3:  20% [0:00:03 of 0:00:04 remaining]
 Chain 3:  30% [0:00:03 of 0:00:04 remaining]
@@ -127,23 +127,23 @@ Thinning interval = 1
 Chains = 1,2,3
 Samples per chain = 9000
 
-[31.2085 154.779 0.914655; 31.006 154.795 0.854511; … ; 21.5516 154.657 0.922241; 23.4458 154.776 0.8596]
+[21.8248 154.378 0.956038; 23.6195 154.378 0.956038; … ; 23.1142 154.235 0.889447; 29.9374 154.182 0.989553]
 
-[27.8817 154.75 0.912162; 27.9577 154.59 0.915764; … ; 24.4925 154.103 0.821428; 24.1384 154.156 0.911786]
+[25.7882 154.664 0.84511; 26.0089 154.664 0.84511; … ; 24.9485 154.375 0.948865; 24.3108 154.2 0.854838]
 
-[26.7091 154.342 0.913162; 22.8531 154.342 0.913162; … ; 25.3037 154.488 0.923935; 30.0818 154.893 0.895388]</code></pre></div><p>Show draws summary</p><div><pre><code class="language-julia">describe(chn)</code></pre><pre><code class="language-none">Iterations = 1001:10000
+[29.4002 154.358 0.882577; 28.4549 154.283 0.967418; … ; 25.9253 154.069 0.88422; 24.8277 154.069 0.88422]</code></pre></div><p>Show draws summary</p><div><pre><code class="language-julia">describe(chn)</code></pre><pre><code class="language-none">Iterations = 1001:10000
 Thinning interval = 1
 Chains = 1,2,3
 Samples per chain = 9000
 
 Empirical Posterior Estimates:
-            Mean        SD        Naive SE        MCSE        ESS
-     s2  26.1751402 2.00752095 0.01221738343 0.01915779234 9000.0000
-beta[1] 154.6002278 0.27156624 0.00165269950 0.00372233937 5322.5485
-beta[2]   0.9053055 0.04239778 0.00025802466 0.00030391257 9000.0000
+           Mean        SD       Naive SE        MCSE        ESS
+     s2  26.176534 1.99217324 0.0121239802 0.01968488469 9000.000
+beta[1] 154.589013 0.27397360 0.0016673502 0.00416840064 4319.948
+beta[2]   0.905104 0.04198989 0.0002555423 0.00031118196 9000.000
 
 Quantiles:
-            2.5%       25.0%       50.0%        75.0%       97.5%
-     s2  22.5236051  24.7816859  26.0682806  27.46928124  30.4125501
-beta[1] 154.0694819 154.4133216 154.5997565 154.78386531 155.1329684
-beta[2]   0.8209796   0.8771727   0.9052318   0.93335926   0.9896629</code></pre></div><p>End of <code>m4.1m.jl</code></p><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p><footer><hr/><a class="previous" href="../../02/m2.1m/"><span class="direction">Previous</span><span class="title">m2.1m</span></a><a class="next" href="../../"><span class="direction">Next</span><span class="title">Functions</span></a></footer></article></body></html>
+            2.5%       25.0%        50.0%        75.0%        97.5%
+     s2  22.5801582  24.7986620  26.06917548  27.44772228  30.37028760
+beta[1] 154.0588340 154.4005417 154.58943153 154.77552453 155.13316501
+beta[2]   0.8231797   0.8768779   0.90438028   0.93384919   0.98711573</code></pre></div><p>End of <code>m4.1m.jl</code></p><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p><footer><hr/><a class="previous" href="../../02/m2.1m/"><span class="direction">Previous</span><span class="title">m2.1m</span></a><a class="next" href="../../"><span class="direction">Next</span><span class="title">Functions</span></a></footer></article></body></html>

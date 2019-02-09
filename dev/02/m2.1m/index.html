@@ -16,9 +16,9 @@ globe_toss[:N] = length(globe_toss[:w]);</code></pre></div><p>Model Specificatio
 ];</code></pre></div><p>Sampling Scheme</p><div><pre><code class="language-julia">scheme = [NUTS(:p)]
 setsamplers!(model, scheme);</code></pre></div><p>MCMC Simulations</p><div><pre><code class="language-julia">sim = mcmc(model, globe_toss, inits, 10000, burnin=2500, thin=1, chains=2);</code></pre><pre><code class="language-none">MCMC Simulation of 10000 Iterations x 2 Chains...
 
-Chain 1:   0% [0:01:48 of 0:01:48 remaining]
+Chain 1:   0% [0:02:05 of 0:02:05 remaining]
 Chain 1:  10% [0:00:02 of 0:00:02 remaining]
-Chain 1:  20% [0:00:01 of 0:00:01 remaining]
+Chain 1:  20% [0:00:01 of 0:00:02 remaining]
 Chain 1:  30% [0:00:01 of 0:00:01 remaining]
 Chain 1:  40% [0:00:01 of 0:00:01 remaining]
 Chain 1:  50% [0:00:01 of 0:00:01 remaining]
@@ -44,9 +44,9 @@ Chains = 1,2
 Samples per chain = 7500
 
 Empirical Posterior Estimates:
-     Mean       SD        Naive SE       MCSE      ESS
-p 0.6604095 0.07013662 0.00057266314 0.0006960992 7500
+     Mean        SD        Naive SE       MCSE      ESS
+p 0.66000575 0.06782612 0.00055379795 0.0006765936 7500
 
 Quantiles:
-     2.5%     25.0%    50.0%      75.0%      97.5%
-p 0.5159506 0.613338 0.6630026 0.71000545 0.78778163</code></pre></div><p>End of <code>clip_08m.jl</code></p><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p><footer><hr/><a class="previous" href="../../intro/"><span class="direction">Previous</span><span class="title">Home</span></a><a class="next" href="../../04/m4.4m/"><span class="direction">Next</span><span class="title">m4.4m</span></a></footer></article></body></html>
+     2.5%      25.0%    50.0%     75.0%     97.5%
+p 0.52294625 0.614246 0.6617041 0.7071848 0.7862703</code></pre></div><p>End of <code>clip_08m.jl</code></p><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p><footer><hr/><a class="previous" href="../../intro/"><span class="direction">Previous</span><span class="title">Home</span></a><a class="next" href="../../04/m4.4m/"><span class="direction">Next</span><span class="title">m4.4m</span></a></footer></article></body></html>
