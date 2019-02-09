@@ -16,12 +16,12 @@ globe_toss[:N] = length(globe_toss[:w]);</code></pre></div><p>Model Specificatio
 ];</code></pre></div><p>Sampling Scheme</p><div><pre><code class="language-julia">scheme = [NUTS(:p)]
 setsamplers!(model, scheme);</code></pre></div><p>MCMC Simulations</p><div><pre><code class="language-julia">sim = mcmc(model, globe_toss, inits, 10000, burnin=2500, thin=1, chains=2);</code></pre><pre><code class="language-none">MCMC Simulation of 10000 Iterations x 2 Chains...
 
-Chain 1:   0% [0:33:57 of 0:33:59 remaining]
-Chain 1:  10% [0:00:19 of 0:00:21 remaining]
-Chain 1:  20% [0:00:09 of 0:00:11 remaining]
-Chain 1:  30% [0:00:06 of 0:00:09 remaining]
-Chain 1:  40% [0:00:04 of 0:00:07 remaining]
-Chain 1:  50% [0:00:03 of 0:00:06 remaining]
+Chain 1:   0% [0:31:41 of 0:31:43 remaining]
+Chain 1:  10% [0:00:18 of 0:00:20 remaining]
+Chain 1:  20% [0:00:08 of 0:00:10 remaining]
+Chain 1:  30% [0:00:06 of 0:00:08 remaining]
+Chain 1:  40% [0:00:04 of 0:00:06 remaining]
+Chain 1:  50% [0:00:03 of 0:00:05 remaining]
 Chain 1:  60% [0:00:02 of 0:00:05 remaining]
 Chain 1:  70% [0:00:01 of 0:00:04 remaining]
 Chain 1:  80% [0:00:01 of 0:00:04 remaining]
@@ -44,9 +44,9 @@ Chains = 1,2
 Samples per chain = 7500
 
 Empirical Posterior Estimates:
-     Mean        SD       Naive SE        MCSE      ESS
-p 0.65978896 0.06853424 0.0005595797 0.00067949754 7500
+     Mean        SD       Naive SE       MCSE      ESS
+p 0.65990143 0.06784091 0.0005539187 0.0006510474 7500
 
 Quantiles:
-     2.5%     25.0%      50.0%      75.0%      97.5%
-p 0.5175005 0.6151807 0.66205853 0.70817876 0.78789954</code></pre></div><p>End of <code>clip_08m.jl</code></p><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p><footer><hr/><a class="previous" href="../../intro/"><span class="direction">Previous</span><span class="title">Home</span></a><a class="next" href="../../"><span class="direction">Next</span><span class="title">Functions</span></a></footer></article></body></html>
+     2.5%     25.0%      50.0%      75.0%     97.5%
+p 0.5207247 0.6151363 0.66219971 0.70838712 0.784391</code></pre></div><p>End of <code>clip_08m.jl</code></p><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p><footer><hr/><a class="previous" href="../../intro/"><span class="direction">Previous</span><span class="title">Home</span></a><a class="next" href="../../"><span class="direction">Next</span><span class="title">Functions</span></a></footer></article></body></html>
