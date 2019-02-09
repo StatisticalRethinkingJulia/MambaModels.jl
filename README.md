@@ -7,8 +7,22 @@
 
 ## Introduction
 
-This package contains Julia versions of selected code snippets and mcmc models contained in the R package "rethinking" associated with the book [Statistical Rethinking](https://xcelab.net/rm/statistical-rethinking/) by Richard McElreath.
+This package contains Julia versions of some mcmc models contained in the R package "rethinking" associated with the book [Statistical Rethinking](https://xcelab.net/rm/statistical-rethinking/) by Richard McElreath.
 
+The examples in this package are using Mamba.jl to simulate the draws.
+
+## Documentation
+
+- [**STABLE**][docs-stable-url] &mdash; **documentation of the most recently tagged version.**
+- [**DEVEL**][docs-dev-url] &mdash; *documentation of the in-development version.*
+
+## Acknowledgements
+
+The  documentation has been generated using Literate.jl and Documenter.jl based on several ideas demonstrated by Tamas Papp in  [DynamicHMCExamples.jl](https://tpapp.github.io/DynamicHMCExamples.jl).
+
+## Questions and issues
+
+Question and contributions are very welcome, as are feature requests and suggestions. Please open an [issue][issues-url] if you encounter any problems or have a question.
 
 [docs-dev-img]: https://img.shields.io/badge/docs-dev-blue.svg
 [docs-dev-url]: https://statisticalrethinkingjulia.github.io/MambaModels.jl/latest
@@ -24,5 +38,5 @@ This package contains Julia versions of selected code snippets and mcmc models c
 
 [issues-url]: https://github.com/StatisticalRethinkingJulia/MambaModels.jl/issues
 
-[project-status-img]: https://img.shields.io/badge/lifecycle-wip-orange.svg
+[project-status-img]: https://img.shields.io/badge/lifecycle-active-orange.svg
 
