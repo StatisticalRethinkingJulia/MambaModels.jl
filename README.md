@@ -7,9 +7,9 @@
 
 ## Introduction
 
-This package contains Julia versions of some mcmc models contained in the R package "rethinking" associated with the book [Statistical Rethinking](https://xcelab.net/rm/statistical-rethinking/) by Richard McElreath.
+This package contains Julia versions of the mcmc models contained in the R package "rethinking" associated with the book [Statistical Rethinking](https://xcelab.net/rm/statistical-rethinking/) by Richard McElreath. It is part of the [StatisticalRethinkingJulia](https://github.com/StatisticalRethinkingJulia) Github organization of packages.
 
-The examples in this package are using Mamba.jl to simulate the draws.
+This package contains the [Mamba](https://github.com/brian-j-smith/Mamba.jl) versions,
 
 ## Documentation
 
@@ -38,5 +38,5 @@ Question and contributions are very welcome, as are feature requests and suggest
 
 [issues-url]: https://github.com/StatisticalRethinkingJulia/MambaModels.jl/issues
 
-[project-status-img]: https://img.shields.io/badge/lifecycle-active-orange.svg
+[project-status-img]: https://img.shields.io/badge/lifecycle-wip-orange.svg
 
