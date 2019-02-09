@@ -13,10 +13,9 @@ const src_path_m = @__DIR__
 
 """
 
-# rel_path_m_m
+# rel_path_m
 
-Relative path using the MambaModels src/ directory. Copied from
-[DynamicHMCExamples.jl](https://github.com/tpapp/DynamicHMCExamples.jl)
+Relative path using the MambaModels src/ directory.
 
 ### Example to get access to the data subdirectory
 ```julia
