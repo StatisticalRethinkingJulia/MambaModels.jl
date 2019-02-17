@@ -1,3 +1,5 @@
+#using Distributed
+#@everywhere using MambaModels
 using MambaModels
 
 # Data

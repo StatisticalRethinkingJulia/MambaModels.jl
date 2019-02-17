@@ -1,3 +1,5 @@
+#using Distributed
+#@everywhere using MambaModels
 using MambaModels
 
 ## Data
@@ -31,7 +33,7 @@ model = Model(
 inits = [
   Dict{Symbol, Any}(
     :y => line[:y],
-    :beta => [rand(Normal(178, 100)), rand(Normal(0, 10))],
+    :beta => [rand(Normal(178, 100)), rand(Normal(0, 10)],
     :s2 => rand(Uniform(0, 50))
   )
   for i in 1:3
