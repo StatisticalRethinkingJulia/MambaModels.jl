@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>m4.4m · MambaModels.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>MambaModels.jl</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../intro/">Home</a></li><li><span class="toctext">Chapter 02</span><ul><li><a class="toctext" href="../../02/m2.1m/">m2.1m</a></li></ul></li><li><span class="toctext">Chapter 04</span><ul><li class="current"><a class="toctext" href>m4.4m</a><ul class="internal"></ul></li></ul></li><li><a class="toctext" href="../../">Functions</a></li></ul></nav><article id="docs"><header><nav><ul><li>Chapter 04</li><li><a href>m4.4m</a></li></ul><a class="edit-page" href="https://github.com/StatisticalRethinkingJulia/MambaModels.jl/blob/master/scripts/04/m4.4m.jl"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>m4.4m</span><a class="fa fa-bars" href="#"></a></div></header><div><pre><code class="language-julia">using MambaModels
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>m4.4m · MambaModels.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>MambaModels.jl</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../intro/">Home</a></li><li><span class="toctext">Chapter 02</span><ul><li><a class="toctext" href="../../02/m2.1m/">m2.1m</a></li></ul></li><li><span class="toctext">Chapter 04</span><ul><li class="current"><a class="toctext" href>m4.4m</a><ul class="internal"></ul></li></ul></li><li><a class="toctext" href="../../">Functions</a></li></ul></nav><article id="docs"><header><nav><ul><li>Chapter 04</li><li><a href>m4.4m</a></li></ul><a class="edit-page" href="https://github.com/StatisticalRethinkingJulia/MambaModels.jl/blob/master/scripts/04/m4.4m.jl"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>m4.4m</span><a class="fa fa-bars" href="#"></a></div></header><div><pre><code class="language-julia">#using Distributed
+#@everywhere using MambaModels
+using MambaModels
 
 # Data
 line = Dict{Symbol, Any}()
 
 howell1 = CSV.read(rel_path(&quot;..&quot;, &quot;data&quot;, &quot;Howell1.csv&quot;), delim=&#39;;&#39;)
-df = convert(DataFrame, howell1);</code></pre></div><p>Use only adults</p><div><pre><code class="language-julia">df2 = filter(row -&gt; row[:age] &gt;= 18, df);
+df = convert(DataFrame, howell1);</code></pre><table class="data-frame"><thead><tr><th></th><th>height</th><th>weight</th><th>age</th><th>male</th></tr><tr><th></th><th>Float64⍰</th><th>Float64⍰</th><th>Float64⍰</th><th>Int64⍰</th></tr></thead><tbody><p>544 rows × 4 columns</p><tr><th>1</th><td>151.765</td><td>47.8256</td><td>63.0</td><td>1</td></tr><tr><th>2</th><td>139.7</td><td>36.4858</td><td>63.0</td><td>0</td></tr><tr><th>3</th><td>136.525</td><td>31.8648</td><td>65.0</td><td>0</td></tr><tr><th>4</th><td>156.845</td><td>53.0419</td><td>41.0</td><td>1</td></tr><tr><th>5</th><td>145.415</td><td>41.2769</td><td>51.0</td><td>0</td></tr><tr><th>6</th><td>163.83</td><td>62.9926</td><td>35.0</td><td>1</td></tr><tr><th>7</th><td>149.225</td><td>38.2435</td><td>32.0</td><td>0</td></tr><tr><th>8</th><td>168.91</td><td>55.48</td><td>27.0</td><td>1</td></tr><tr><th>9</th><td>147.955</td><td>34.8699</td><td>19.0</td><td>0</td></tr><tr><th>10</th><td>165.1</td><td>54.4877</td><td>54.0</td><td>1</td></tr><tr><th>11</th><td>154.305</td><td>49.8951</td><td>47.0</td><td>0</td></tr><tr><th>12</th><td>151.13</td><td>41.2202</td><td>66.0</td><td>1</td></tr><tr><th>13</th><td>144.78</td><td>36.0322</td><td>73.0</td><td>0</td></tr><tr><th>14</th><td>149.9</td><td>47.7</td><td>20.0</td><td>0</td></tr><tr><th>15</th><td>150.495</td><td>33.8493</td><td>65.3</td><td>0</td></tr><tr><th>16</th><td>163.195</td><td>48.5627</td><td>36.0</td><td>1</td></tr><tr><th>17</th><td>157.48</td><td>42.3258</td><td>44.0</td><td>1</td></tr><tr><th>18</th><td>143.942</td><td>38.3569</td><td>31.0</td><td>0</td></tr><tr><th>19</th><td>121.92</td><td>19.6179</td><td>12.0</td><td>1</td></tr><tr><th>20</th><td>105.41</td><td>13.948</td><td>8.0</td><td>0</td></tr><tr><th>21</th><td>86.36</td><td>10.4893</td><td>6.5</td><td>0</td></tr><tr><th>22</th><td>161.29</td><td>48.9879</td><td>39.0</td><td>1</td></tr><tr><th>23</th><td>156.21</td><td>42.7227</td><td>29.0</td><td>0</td></tr><tr><th>24</th><td>129.54</td><td>23.5868</td><td>13.0</td><td>1</td></tr><tr><th>&vellip;</th><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td></tr></tbody></table></div><p>Use only adults</p><div><pre><code class="language-julia">df2 = filter(row -&gt; row[:age] &gt;= 18, df);
 mean_weight = mean(df2[:weight])
 df2[:weight_c] = convert(Vector{Float64}, df2[:weight]) .- mean_weight ;
 line[:x] = convert(Array{Float64,1}, df2[:weight_c]);
@@ -52,14 +54,11 @@ A monitored node of type &quot;ScalarStochastic&quot;
 NaN</code></pre></div><p>Initial Values</p><div><pre><code class="language-julia">inits = [
   Dict{Symbol, Any}(
     :y =&gt; line[:y],
-    :beta =&gt; [rand(Normal(178, 100)), rand(Normal(0, 10))],
+    :beta =&gt; [rand(Normal(178, 100)), rand(Normal(0, 10)],
     :s2 =&gt; rand(Uniform(0, 50))
   )
   for i in 1:3
-]</code></pre><pre><code class="language-none">3-element Array{Dict{Symbol,Any},1}:
- Dict(:beta=&gt;[-14.8748, 7.90018],:y=&gt;[151.765, 139.7, 136.525, 156.845, 145.415, 163.83, 149.225, 168.91, 147.955, 165.1  …  156.21, 160.655, 146.05, 156.21, 152.4, 162.56, 142.875, 162.56, 156.21, 158.75],:s2=&gt;8.93772)
- Dict(:beta=&gt;[198.002, 15.9835],:y=&gt;[151.765, 139.7, 136.525, 156.845, 145.415, 163.83, 149.225, 168.91, 147.955, 165.1  …  156.21, 160.655, 146.05, 156.21, 152.4, 162.56, 142.875, 162.56, 156.21, 158.75],:s2=&gt;40.165)
- Dict(:beta=&gt;[105.044, -4.03791],:y=&gt;[151.765, 139.7, 136.525, 156.845, 145.415, 163.83, 149.225, 168.91, 147.955, 165.1  …  156.21, 160.655, 146.05, 156.21, 152.4, 162.56, 142.875, 162.56, 156.21, 158.75],:s2=&gt;30.8327)</code></pre></div><p>Tuning Parameters</p><div><pre><code class="language-julia">scale1 = [0.5, 0.25]
+]</code></pre></div><p>Tuning Parameters</p><div><pre><code class="language-julia">scale1 = [0.5, 0.25]
 summary1 = identity
 eps1 = 0.5
 
@@ -82,68 +81,4 @@ Float64[]
 -------------------------------------------------------------------------------
 s2:
 A monitored node of type &quot;ScalarStochastic&quot;
-NaN</code></pre></div><p>MCMC Simulation</p><div><pre><code class="language-julia">chn = mcmc(model, line, inits, 10000, burnin=1000, chains=3)</code></pre><pre><code class="language-none">MCMC Simulation of 10000 Iterations x 3 Chains...
-
-Chain 1:   0% [0:44:01 of 0:44:04 remaining]
-Chain 1:  10% [0:00:27 of 0:00:30 remaining]
-Chain 1:  20% [0:00:15 of 0:00:19 remaining]
-Chain 1:  30% [0:00:10 of 0:00:14 remaining]
-Chain 1:  40% [0:00:07 of 0:00:11 remaining]
-Chain 1:  50% [0:00:05 of 0:00:10 remaining]
-Chain 1:  60% [0:00:04 of 0:00:09 remaining]
-Chain 1:  70% [0:00:02 of 0:00:08 remaining]
-Chain 1:  80% [0:00:02 of 0:00:08 remaining]
-Chain 1:  90% [0:00:01 of 0:00:07 remaining]
-Chain 1: 100% [0:00:00 of 0:00:07 remaining]
-
-Chain 2:   0% [0:00:02 of 0:00:02 remaining]
-Chain 2:  10% [0:00:03 of 0:00:04 remaining]
-Chain 2:  20% [0:00:03 of 0:00:04 remaining]
-Chain 2:  30% [0:00:03 of 0:00:04 remaining]
-Chain 2:  40% [0:00:02 of 0:00:04 remaining]
-Chain 2:  50% [0:00:02 of 0:00:04 remaining]
-Chain 2:  60% [0:00:02 of 0:00:04 remaining]
-Chain 2:  70% [0:00:01 of 0:00:04 remaining]
-Chain 2:  80% [0:00:01 of 0:00:04 remaining]
-Chain 2:  90% [0:00:00 of 0:00:04 remaining]
-Chain 2: 100% [0:00:00 of 0:00:04 remaining]
-
-Chain 3:   0% [0:00:02 of 0:00:02 remaining]
-Chain 3:  10% [0:00:03 of 0:00:04 remaining]
-Chain 3:  20% [0:00:03 of 0:00:04 remaining]
-Chain 3:  30% [0:00:03 of 0:00:04 remaining]
-Chain 3:  40% [0:00:02 of 0:00:04 remaining]
-Chain 3:  50% [0:00:02 of 0:00:04 remaining]
-Chain 3:  60% [0:00:02 of 0:00:04 remaining]
-Chain 3:  70% [0:00:01 of 0:00:04 remaining]
-Chain 3:  80% [0:00:01 of 0:00:04 remaining]
-Chain 3:  90% [0:00:00 of 0:00:04 remaining]
-Chain 3: 100% [0:00:00 of 0:00:04 remaining]
-
-Object of type &quot;ModelChains&quot;
-
-Iterations = 1001:10000
-Thinning interval = 1
-Chains = 1,2,3
-Samples per chain = 9000
-
-[21.8248 154.378 0.956038; 23.6195 154.378 0.956038; … ; 23.1142 154.235 0.889447; 29.9374 154.182 0.989553]
-
-[25.7882 154.664 0.84511; 26.0089 154.664 0.84511; … ; 24.9485 154.375 0.948865; 24.3108 154.2 0.854838]
-
-[29.4002 154.358 0.882577; 28.4549 154.283 0.967418; … ; 25.9253 154.069 0.88422; 24.8277 154.069 0.88422]</code></pre></div><p>Show draws summary</p><div><pre><code class="language-julia">describe(chn)</code></pre><pre><code class="language-none">Iterations = 1001:10000
-Thinning interval = 1
-Chains = 1,2,3
-Samples per chain = 9000
-
-Empirical Posterior Estimates:
-           Mean        SD       Naive SE        MCSE        ESS
-     s2  26.176534 1.99217324 0.0121239802 0.01968488469 9000.000
-beta[1] 154.589013 0.27397360 0.0016673502 0.00416840064 4319.948
-beta[2]   0.905104 0.04198989 0.0002555423 0.00031118196 9000.000
-
-Quantiles:
-            2.5%       25.0%        50.0%        75.0%        97.5%
-     s2  22.5801582  24.7986620  26.06917548  27.44772228  30.37028760
-beta[1] 154.0588340 154.4005417 154.58943153 154.77552453 155.13316501
-beta[2]   0.8231797   0.8768779   0.90438028   0.93384919   0.98711573</code></pre></div><p>End of <code>m4.1m.jl</code></p><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p><footer><hr/><a class="previous" href="../../02/m2.1m/"><span class="direction">Previous</span><span class="title">m2.1m</span></a><a class="next" href="../../"><span class="direction">Next</span><span class="title">Functions</span></a></footer></article></body></html>
+NaN</code></pre></div><p>MCMC Simulation</p><pre><code class="language- 4m">chn = mcmc(model, line, inits, 10000, burnin=1000, chains=3)</code></pre><p>Show draws summary</p><pre><code class="language- 4m">describe(chn)</code></pre><p>End of <code>m4.1m.jl</code></p><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p><footer><hr/><a class="previous" href="../../02/m2.1m/"><span class="direction">Previous</span><span class="title">m2.1m</span></a><a class="next" href="../../"><span class="direction">Next</span><span class="title">Functions</span></a></footer></article></body></html>
