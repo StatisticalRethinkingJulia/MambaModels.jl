@@ -1,6 +1,6 @@
 #using Distributed
 #@everywhere using MambaModels
-using MambaModels
+using MambaModels, MCMCChains
 
 globe_toss = Dict{Symbol, Any}(
   :w => [6, 7, 5, 6, 6],
@@ -25,9 +25,15 @@ inits = [
 scheme = [NUTS(:p)]
 setsamplers!(model, scheme);
 
-sim = mcmc(model, globe_toss, inits, 10000, burnin=2500, thin=1, chains=2);
+chn = mcmc(model, globe_toss, inits, 10000, burnin=2500, thin=1, chains=2);
 
-describe(sim)
+describe(chn)
+
+chn2 = MCMCChains.Chains(chn.value, Symbol.(chn.names))
+
+MCMCChains.describe(chn2)
+
+MCMCChains.plot(chn2)
 
 # This file was generated using Literate.jl, https://github.com/fredrikekre/Literate.jl
 

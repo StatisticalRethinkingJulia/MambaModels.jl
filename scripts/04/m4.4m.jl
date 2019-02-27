@@ -1,7 +1,6 @@
 #using Distributed
 #@everywhere using MambaModels
 using MambaModels
-using MCMCChains
 gr(size=(400,400))
 
 ## Data

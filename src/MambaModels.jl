@@ -5,7 +5,7 @@ using Reexport
 @reexport using StatisticalRethinking, Distributions, RDatasets, DataFrames
 @reexport using StatsBase, StatsPlots, StatsFuns 
 @reexport using CSV, DelimitedFiles, Serialization
-@reexport using MCMCChain, Mamba
+@reexport using MCMCChains, Mamba
 
 using DataStructures
 

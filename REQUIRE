@@ -1,4 +1,4 @@
-julia 1.0
+julia 1.2
 StatisticalRethinking
 Distributions
 DataFrames
@@ -11,7 +11,6 @@ Reexport
 CSV
 Mamba
 StatsFuns
-MCMCChain
 DataStructures
 JLD
 Gadfly

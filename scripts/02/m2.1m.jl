@@ -1,6 +1,6 @@
 #using Distributed
 #@everywhere using MambaModels
-using MambaModels
+using MambaModels, MCMCChains
 
 # Data
 
@@ -35,10 +35,22 @@ setsamplers!(model, scheme);
 
 # MCMC Simulations
 
-sim = mcmc(model, globe_toss, inits, 10000, burnin=2500, thin=1, chains=2);
+chn = mcmc(model, globe_toss, inits, 10000, burnin=2500, thin=1, chains=2);
 
 # Describe draws
 
-describe(sim)
+describe(chn)
 
-# End of `clip_08m.jl`
+# Convert to MCMCChains.Chains object
+
+chn2 = MCMCChains.Chains(chn.value, Symbol.(chn.names))
+
+# Describe the MCMCChains
+
+MCMCChains.describe(chn2)
+
+# Plot chn2
+
+MCMCChains.plot(chn2)
+
+# End of `02/m2.1m.jl`
