@@ -1,4 +1,8 @@
+#using Distributed
+#@everywhere using MambaModels
 using MambaModels
+using MCMCChains
+gr(size=(400,400))
 
 # Data
 line = Dict{Symbol, Any}()
@@ -49,6 +53,12 @@ setsamplers!(model, scheme)
 chn = mcmc(model, line, inits, 10000, burnin=1000, chains=3)
 
 describe(chn)
+
+chn2 = MCMCChains.Chains(chn.value, Symbol.(chn.names))
+
+MCMCChains.describe(chn2)
+
+MCMCChains.plot(chn2)
 
 # This file was generated using Literate.jl, https://github.com/fredrikekre/Literate.jl
 

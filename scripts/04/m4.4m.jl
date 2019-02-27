@@ -1,6 +1,8 @@
 #using Distributed
 #@everywhere using MambaModels
 using MambaModels
+using MCMCChains
+gr(size=(400,400))
 
 ## Data
 line = Dict{Symbol, Any}()
@@ -33,7 +35,7 @@ model = Model(
 inits = [
   Dict{Symbol, Any}(
     :y => line[:y],
-    :beta => [rand(Normal(178, 100)), rand(Normal(0, 10)],
+    :beta => [rand(Normal(178, 100)), rand(Normal(0, 10))],
     :s2 => rand(Uniform(0, 50))
   )
   for i in 1:3
@@ -66,4 +68,16 @@ chn = mcmc(model, line, inits, 10000, burnin=1000, chains=3)
 
 describe(chn)
 
-# End of `m4.1m.jl`
+# Convert to MCMCChains.Chains object
+
+chn2 = MCMCChains.Chains(chn.value, Symbol.(chn.names))
+
+# Describe the MCMCChains
+
+MCMCChains.describe(chn2)
+
+# Plot chn2
+
+MCMCChains.plot(chn2)
+
+# End of `04/m4.1m.jl`

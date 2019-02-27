@@ -1,3 +1,5 @@
+#using Distributed
+#@everywhere using MambaModels
 using MambaModels
 
 globe_toss = Dict{Symbol, Any}(
