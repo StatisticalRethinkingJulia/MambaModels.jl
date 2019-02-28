@@ -3,7 +3,7 @@ module MambaModels
 using Reexport 
 
 @reexport using StatisticalRethinking, Distributions, RDatasets, DataFrames
-@reexport using StatsBase, StatsPlots, StatsFuns 
+@reexport using StatsBase, StatsPlots, StatsFuns, Plots 
 @reexport using CSV, DelimitedFiles, Serialization
 @reexport using MCMCChains, Mamba
 
