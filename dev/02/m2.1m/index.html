@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>m2.1m · MambaModels.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>MambaModels.jl</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../intro/">Home</a></li><li><span class="toctext">Chapter 02</span><ul><li class="current"><a class="toctext" href>m2.1m</a><ul class="internal"></ul></li></ul></li><li><span class="toctext">Chapter 04</span><ul><li><a class="toctext" href="../../04/m4.4m/">m4.4m</a></li></ul></li><li><a class="toctext" href="../../">Functions</a></li></ul></nav><article id="docs"><header><nav><ul><li>Chapter 02</li><li><a href>m2.1m</a></li></ul><a class="edit-page" href="https://github.com/StatisticalRethinkingJulia/MambaModels.jl/blob/master/scripts/02/m2.1m.jl"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>m2.1m</span><a class="fa fa-bars" href="#"></a></div></header><div><pre><code class="language-julia">#using Distributed
 #@everywhere using MambaModels
-using MambaModels</code></pre></div><p>Data</p><div><pre><code class="language-julia">globe_toss = Dict{Symbol, Any}(
+using MambaModels, MCMCChains</code></pre></div><p>Data</p><div><pre><code class="language-julia">globe_toss = Dict{Symbol, Any}(
   :w =&gt; [6, 7, 5, 6, 6],
   :n =&gt; [9, 9, 9, 9, 9]
 )
@@ -25,7 +25,7 @@ NaN</code></pre></div><p>Initial Values</p><div><pre><code class="language-julia
   Dict(:w =&gt; globe_toss[:w], :n =&gt; globe_toss[:n], :p =&gt; rand(Beta(1, 1)))
 ];</code></pre><pre><code class="language-none">2-element Array{Dict{Symbol,Any},1}:
  Dict(:w=&gt;[6, 7, 5, 6, 6],:p=&gt;0.5,:n=&gt;[9, 9, 9, 9, 9])
- Dict(:w=&gt;[6, 7, 5, 6, 6],:p=&gt;0.921076,:n=&gt;[9, 9, 9, 9, 9])</code></pre></div><p>Sampling Scheme</p><div><pre><code class="language-julia">scheme = [NUTS(:p)]
+ Dict(:w=&gt;[6, 7, 5, 6, 6],:p=&gt;0.619883,:n=&gt;[9, 9, 9, 9, 9])</code></pre></div><p>Sampling Scheme</p><div><pre><code class="language-julia">scheme = [NUTS(:p)]
 setsamplers!(model, scheme);</code></pre><pre><code class="language-none">Object of type &quot;Model&quot;
 -------------------------------------------------------------------------------
 w:
@@ -34,14 +34,14 @@ Float64[]
 -------------------------------------------------------------------------------
 p:
 A monitored node of type &quot;ScalarStochastic&quot;
-NaN</code></pre></div><p>MCMC Simulations</p><div><pre><code class="language-julia">sim = mcmc(model, globe_toss, inits, 10000, burnin=2500, thin=1, chains=2);</code></pre><pre><code class="language-none">MCMC Simulation of 10000 Iterations x 2 Chains...
+NaN</code></pre></div><p>MCMC Simulations</p><div><pre><code class="language-julia">chn = mcmc(model, globe_toss, inits, 10000, burnin=2500, thin=1, chains=2);</code></pre><pre><code class="language-none">MCMC Simulation of 10000 Iterations x 2 Chains...
 
-Chain 1:   0% [0:31:39 of 0:31:41 remaining]
-Chain 1:  10% [0:00:18 of 0:00:20 remaining]
-Chain 1:  20% [0:00:08 of 0:00:10 remaining]
-Chain 1:  30% [0:00:06 of 0:00:08 remaining]
-Chain 1:  40% [0:00:04 of 0:00:06 remaining]
-Chain 1:  50% [0:00:03 of 0:00:05 remaining]
+Chain 1:   0% [0:33:06 of 0:33:08 remaining]
+Chain 1:  10% [0:00:19 of 0:00:21 remaining]
+Chain 1:  20% [0:00:09 of 0:00:11 remaining]
+Chain 1:  30% [0:00:06 of 0:00:09 remaining]
+Chain 1:  40% [0:00:04 of 0:00:07 remaining]
+Chain 1:  50% [0:00:03 of 0:00:06 remaining]
 Chain 1:  60% [0:00:02 of 0:00:05 remaining]
 Chain 1:  70% [0:00:01 of 0:00:04 remaining]
 Chain 1:  80% [0:00:01 of 0:00:04 remaining]
@@ -52,7 +52,7 @@ Chain 2:   0% [0:00:01 of 0:00:01 remaining]
 Chain 2:  10% [0:00:01 of 0:00:01 remaining]
 Chain 2:  20% [0:00:01 of 0:00:01 remaining]
 Chain 2:  30% [0:00:01 of 0:00:01 remaining]
-Chain 2:  40% [0:00:00 of 0:00:01 remaining]
+Chain 2:  40% [0:00:01 of 0:00:01 remaining]
 Chain 2:  50% [0:00:00 of 0:00:01 remaining]
 Chain 2:  60% [0:00:00 of 0:00:01 remaining]
 Chain 2:  70% [0:00:00 of 0:00:01 remaining]
@@ -67,17 +67,39 @@ Thinning interval = 1
 Chains = 1,2
 Samples per chain = 7500
 
-[0.755195; 0.755195; … ; 0.582532; 0.626144]
+[0.719028; 0.719028; … ; 0.696841; 0.696841]
 
-[0.760394; 0.645118; … ; 0.681255; 0.656326]</code></pre></div><p>Describe draws</p><div><pre><code class="language-julia">describe(sim)</code></pre><pre><code class="language-none">Iterations = 2501:10000
+[0.695697; 0.633385; … ; 0.562277; 0.562277]</code></pre></div><p>Describe draws</p><div><pre><code class="language-julia">describe(chn)</code></pre><pre><code class="language-none">Iterations = 2501:10000
 Thinning interval = 1
 Chains = 1,2
 Samples per chain = 7500
 
 Empirical Posterior Estimates:
-     Mean        SD       Naive SE       MCSE      ESS
-p 0.65909664 0.06807918 0.0005558642 0.0006904592 7500
+     Mean        SD       Naive SE      MCSE      ESS
+p 0.65968069 0.06953097 0.000567718 0.0007016776 7500
 
 Quantiles:
-     2.5%      25.0%     50.0%    75.0%      97.5%
-p 0.5217534 0.61416761 0.660414 0.7067513 0.78480136</code></pre></div><p>End of <code>clip_08m.jl</code></p><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p><footer><hr/><a class="previous" href="../../intro/"><span class="direction">Previous</span><span class="title">Home</span></a><a class="next" href="../../04/m4.4m/"><span class="direction">Next</span><span class="title">m4.4m</span></a></footer></article></body></html>
+     2.5%     25.0%     50.0%     75.0%     97.5%
+p 0.5169554 0.6134311 0.6619697 0.7088161 0.7875686</code></pre></div><p>Convert to MCMCChains.Chains object</p><div><pre><code class="language-julia">chn2 = MCMCChains.Chains(chn.value, Symbol.(chn.names))</code></pre><pre><code class="language-none">Object of type &quot;MCMCChains.Chains{Float64,Float64,NamedTuple{(:parameters,),Tuple{Array{Any,1}}},NamedTuple{(),Tuple{}}}&quot;
+
+Iterations        = 1:7500
+Thinning interval = 1
+Chains            = Chain1, Chain2
+Samples per chain = 7500
+parameters        = p</code></pre></div><p>Describe the MCMCChains</p><div><pre><code class="language-julia">MCMCChains.describe(chn2)</code></pre><pre><code class="language-none">Iterations        = 1:7500
+Thinning interval = 1
+Chains            = Chain1, Chain2
+Samples per chain = 7500
+parameters        = p
+
+Empirical Posterior Estimates:
+====================================
+parameters
+   Mean    SD   Naive SE  MCSE   ESS
+p 0.6597 0.0695   0.0006 0.0007 7500
+
+Quantiles:
+====================================
+parameters
+   2.5%  25.0% 50.0%  75.0% 97.5%
+p 0.377 0.6134 0.662 0.7088 0.888</code></pre></div><p>Plot chn2</p><pre><code class="language- 1m">MCMCChains.plot(chn2)</code></pre><p>End of <code>02/m2.1m.jl</code></p><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p><footer><hr/><a class="previous" href="../../intro/"><span class="direction">Previous</span><span class="title">Home</span></a><a class="next" href="../../04/m4.4m/"><span class="direction">Next</span><span class="title">m4.4m</span></a></footer></article></body></html>
