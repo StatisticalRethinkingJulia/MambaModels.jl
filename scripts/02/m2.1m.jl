@@ -1,5 +1,3 @@
-#using Distributed
-#@everywhere using MambaModels
 using MambaModels
 
 # Data
@@ -48,9 +46,5 @@ chn2 = MCMCChains.Chains(chn.value, String.(chn.names))
 # Describe the MCMCChains
 
 MCMCChains.describe(chn2)
-
-# Plot chn2
-
-MCMCChains.plot(chn2)
 
 # End of `02/m2.1m.jl`

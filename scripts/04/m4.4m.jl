@@ -1,22 +1,19 @@
-#using Distributed
-#@everywhere using MambaModels
 using MambaModels
-gr(size=(400,400))
 
 ## Data
 line = Dict{Symbol, Any}()
 
-howell1 = CSV.read(rel_path("..", "data", "Howell1.csv"), delim=';')
-df = convert(DataFrame, howell1);
+df = DataFrame(CSV.read(joinpath(@__DIR__, "..", "..", "data", "Howell1.csv"),
+  delim=';'));
 
 # Use only adults
 
 df2 = filter(row -> row[:age] >= 18, df);
-mean_weight = mean(df2[:weight])
-df2[:weight_c] = convert(Vector{Float64}, df2[:weight]) .- mean_weight ;
-line[:x] = convert(Array{Float64,1}, df2[:weight_c]);
-line[:y] = convert(Array{Float64,1}, df2[:height]);
-line[:xmat] = convert(Array{Float64,2}, [ones(length(line[:x])) line[:x]])
+mean_weight = mean(df2[:, :weight])
+df2[!, :weight_c] = convert(Vector{Float64}, df2[:, :weight]) .- mean_weight ;
+line[:x] = df2[:, :weight_c];
+line[:y] = df2[:, :height];
+line[:xmat] = convert(Array{Float64, 2}, [ones(length(line[:x])) line[:x]])
 
 # Model Specification
 
@@ -74,9 +71,5 @@ chn2 = MCMCChains.Chains(chn.value, String.(chn.names))
 # Describe the MCMCChains
 
 MCMCChains.describe(chn2)
-
-# Plot chn2
-
-MCMCChains.plot(chn2)
 
 # End of `04/m4.1m.jl`
