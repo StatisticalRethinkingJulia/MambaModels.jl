@@ -16,10 +16,6 @@ This package contains the [Mamba](https://github.com/brian-j-smith/Mamba.jl) ver
 - [**STABLE**][docs-stable-url] &mdash; **documentation of the most recently tagged version.**
 - [**DEVEL**][docs-dev-url] &mdash; *documentation of the in-development version.*
 
-## Acknowledgements
-
-The  documentation has been generated using Literate.jl and Documenter.jl based on several ideas demonstrated by Tamas Papp in  [DynamicHMCExamples.jl](https://tpapp.github.io/DynamicHMCExamples.jl).
-
 ## Questions and issues
 
 Question and contributions are very welcome, as are feature requests and suggestions. Please open an [issue][issues-url] if you encounter any problems or have a question.
